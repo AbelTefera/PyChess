@@ -87,5 +87,7 @@ class Board:
     piece = tile_from.piece
     if piece == None:
       return False
+    elif from_pos == dest_pos:
+      return False
     return True
 

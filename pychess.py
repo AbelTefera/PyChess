@@ -33,13 +33,11 @@ while True:
       y = int(mypos/((scr_h/8)))
       i = x + 8*y
       piece = g_b.board[i].piece
+      if selc1 != None and selc2 == None and i != selc1:
+        selc2 = i
       if selc1 == None and piece != None:
         selc1 = i
-        print(f'selected 1 {selc1}')
-      if selc2 == None and piece == None:
-        selc2 = i
-      if selc1 != None and selc2 != None
-        print(f'selected 2 {selc2} and 1 {selc1}')
+      if selc1 != None and selc2 != None and selc1 != selc2:
         g_b.move(selc1, selc2)
         change = True
         selc1, selc2 = None, None
