@@ -8,15 +8,10 @@ pygame.init()
 screen = pygame.display.set_mode((scr_w,scr_h))
 g_b = Board(scr_w, scr_h) # game board obj
 
-pawn = pygame.image.load(r'C:\Users\Abel\Desktop\PyProj\PyChess\W_P.png')
 change = True # used to detect change to board so it can be updated
 
 selc1 = None
 selc2 = None
-
-def get(p_name):
-  result = pygame.image.load(os.path.join(f'W_{p_name}.png'))
-  return result
 
 while True:
   ##### event handling #####
