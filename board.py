@@ -66,28 +66,43 @@ class Board:
   
  
   # returns true for successful move and false otherwise
-  def move(self, from_pos, dest_pos):
-    move_valid = self.is_move_valid(from_pos, dest_pos)
+  def move(self, from_pos, dest_pos, curr_player):
+    move_valid = self.is_move_valid(from_pos, dest_pos, curr_player)
     if move_valid:
       tile_from = self.collide(from_pos)
       piece = tile_from.piece
-      tile_dest = self.board[dest_pos]
-      if tile_dest == None:
-        print('none')
       tile_dest.piece = piece 
       tile_from.piece = None
       return True
 
     return False
 
-  
+  def get_tile(self, pos):
+    return self.board[pos]
+
   # returns true for valid moves and false otherwise
-  def is_move_valid(self, from_pos, dest_pos):
+  def is_move_valid(self, from_pos, dest_pos, curr_player):
     tile_from = self.collide(from_pos)
+    tile_dest = self.get_tile(dest_pos)
     piece = tile_from.piece
+    dest_piece = None
+    if tile_dest.piece != None:
+      dest_piece = tile_dest.piece
+    valid = True
     if piece == None:
-      return False
+      valid = False
     elif from_pos == dest_pos:
-      return False
-    return True
+      valid = False
+    elif not piece.is_move_legal(from_pos+1, dest_pos+1):
+      valid = False
+    elif curr_player != piece.color:
+      valid = False
+    elif dest_piece != None and curr_player == dest_piece.color:
+      valid = False
+    
+    if not valid:
+      print(f'move from {from_pos+1} > {dest_pos+1} is not valid')
+
+    return valid
+
 
