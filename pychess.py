@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import pygame,sys, os
 
 from board import Board
