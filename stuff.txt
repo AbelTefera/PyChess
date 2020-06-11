@@ -1,0 +1,10 @@
+start menu potions
+
+select mode:
+	single player,
+	multi player
+
+multi player:
+	ip for match,
+	wait for match,
+	accept a match up

@@ -7,4 +7,9 @@ class Pawn(Piece):
 
   def get_img(self):
     return super().get_img('P')
-   
+  
+  def is_move_legal(self, from_pos, dest_pos):
+    if self.color == 'W':
+      return dest_pos-from_pos == 8
+    elif self.color == 'B':
+      return dest_pos-from_pos == -8
